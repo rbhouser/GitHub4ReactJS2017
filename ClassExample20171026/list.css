@@ -1,0 +1,14 @@
+.list {
+	background: #E0E0E0;
+	margin: 0 10px;
+	padding: 8px;
+	min-width: 200px;
+	border-radius: 4px;
+}
+
+.list:firstchild {
+	margin-left: 0;
+}
+.list:lastchild {
+	margin-left: 0;
+}
