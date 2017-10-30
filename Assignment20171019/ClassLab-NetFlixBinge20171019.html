@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Class Lab - Net Flix Binge 20171019 </title>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+			#div1 {
+				align: center;
+			}
+
+			#Button {
+				margin: 12px;
+				background-color: #4CAF50;
+				font-size: 24px;
+				border-color: black;
+				border-size: 2px;
+				border-radius: 12px;
+
+				align: center;
+				background-color: white;
+			}
+		</style>
+	</head>
+	<body>
+
+		<button id = "Button" onclick = "removeEarliestEpisode()">Click After Watching</button><br><br>
+		<div id = div1>
+			<h1 id = "removed"><h1 id = "next"></h1></h1>
+			<h1 id = "next"></h1>
+		</div>
+
+		<script type="text/javascript">
+			// The following are episodes for Arrested Development. 
+
+			const episodes = [
+			  { id: 's06e01', title: 'Pilot' },
+			  { id: 's06e02', title: 'Top Banana' },
+			  { id: 's06e03', title: 'Charity Drive' },
+			  { id: 's06e04', title: 'Visiting Ours' },
+			  { id: 's06e05', title: 'My Mother, the Car' },
+			  { id: 's06e06', title: 'In God We Trust' },
+			  { id: 's06e07', title: 'Storming the castle' },
+			  { id: 's06e08', title: 'Pier Pressure' },
+			  { id: 's06e09', title: 'Public Relations' },
+			]
+
+			const finaleEpisode = { id: 's06e10', title: 'Bringing Up Buster' };
+			
+			var Season1 = episodes.map(function(item){
+							return item;
+			})
+
+			// Add this finaleEpisode to the episodes object and save that into addToPlaylist.
+			Season1 = Season1.concat(finaleEpisode);
+
+			// You may want to add a function which takes away the current episode you were just watching and returns the new object consisting only of the rest of the episodes which you have not viewed yet. 
+			var remainingEpisodes = Object.assign([], Season1);
+
+			// You might want to create a function which shows the viewer the next episode. 
+			// ** this would be a useful function after you have filtered or sliced the previous episode object out of the array ** 
+
+			// Display the just-watched and next-to-watch espisodes
+
+			function removeEarliestEpisode() {
+				if (remainingEpisodes.length !== 0) {
+					// Display current episode on console
+					console.log("\n" + "Current episode " + remainingEpisodes[0].title + "\n");
+					
+					// Display remaining episodes on console
+					console.log((remainingEpisodes.length - 1)+ " Remaining episodes");
+					
+					for (var i = 1; i < remainingEpisodes.length; i++) {
+						nextEpisode = remainingEpisodes[i].title;
+						console.log(nextEpisode);
+					}
+				}else{
+					console.log("No episodes remaining to watch.");
+				} 
+
+				//Step 1. Tell the Viewer the just watched episode
+				justWatched = remainingEpisodes[0].title;
+				justWatchedMessage = "Just watched the \""  + justWatched + "\" Episode.";
+				document.getElementById("removed").innerHTML =  justWatchedMessage;
+
+				//Step 2. Tell the Viewer the next episode
+				if (remainingEpisodes.length == 1){
+					document.getElementById("next").innerHTML = "No episodes remaining to watch.";
+					
+					function disableButton(){
+					document.getElementById("Button").disabled;	
+					}
+					disableButton();
+				}else {
+					nextToWatch = remainingEpisodes[1].title;
+					nextToWatchMessage = "The next episode is \""  + nextToWatch + "\".";
+					document.getElementById("next").innerHTML = nextToWatchMessage;
+				}
+
+				//Step 3. Update the list of remaining episodes
+				if (remainingEpisodes.length > 1){
+					remainingEpisodes.shift();
+				}
+			}
+
+		</script>
+
+	</body>
+</html>
