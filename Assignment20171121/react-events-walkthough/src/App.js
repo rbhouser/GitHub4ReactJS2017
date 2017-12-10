@@ -31,11 +31,7 @@ class App extends React.Component {
     this.setState({
       input: e.target.value
     })
-
   }
-
-
-
 
 
   render() {
@@ -57,7 +53,6 @@ class App extends React.Component {
       </div>
     );
   }
-}
 
 
 
