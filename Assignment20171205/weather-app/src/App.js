@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import MyNavbar from './components/MyNavbar'
+import MyNavbar from './components/MyNavbar';
 
 class App extends Component {
   render() {
+
+  	debugger
+
     return (
       <div>
         <MyNavbar />
-        { this.props.children }
+        {this.props.children}
       </div>
     );
   }
