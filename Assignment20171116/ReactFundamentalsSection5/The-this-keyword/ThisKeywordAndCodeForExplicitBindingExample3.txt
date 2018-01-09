@@ -1,0 +1,22 @@
+/*
+ - Implicit Binding
+ - Explicit Binding
+ - new Binding
+ - window Binding
+*/
+
+// Expicit Binding
+// call, apply, bind
+
+var sayName: function(lang1, lang2, lang3){
+  console.log('My name is ' + this.name + ' and I know ' + lang1 + ', ' + lang2 + ', and ' + lang3);
+};
+
+var stacey = {
+   name: name,
+   age: age,
+};
+
+var languages = ['JavaScript', 'Ruby', 'Python'];
+
+sayName.call(stacey, languages[0], languages[1], languages[2]);

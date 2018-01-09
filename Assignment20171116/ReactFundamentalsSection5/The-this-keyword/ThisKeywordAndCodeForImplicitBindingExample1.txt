@@ -1,0 +1,12 @@
+function welcomeTemplate (fName, lName, email) {
+   return 
+      "<div>" +
+           "<h1>Hello, " + fName + " " + lName + ".</h1>" +
+           "<i>The email you used to sign up is \"" + email + "\"</i>" +
+      "</div>"
+}
+
+function welcomeMsg (fName, lName, email) {
+   return "Hello, " + fName + " " + lName + ". The email you used 
+sign up is \"" + email + "\""
+}
