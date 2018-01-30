@@ -2,17 +2,20 @@ import React from 'react';
 
 
 
-
 class Todo extends React.Component{
 
-	render(){
-		console.log(this.props)
-	  return(
-	    <div>
-	    	<li>{this.props.task}</li>
-	    </div>
-	  	)
-	}
+render(){
+  return(
+    <div>
+       <button onClick={(event)=>this.props.alert(event)}>My alert button </button>
+       <br /><br />
+
+    </div>
+  )
+
+
+}
+
 }
 
 export default Todo

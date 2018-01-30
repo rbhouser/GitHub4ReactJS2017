@@ -8,16 +8,6 @@ import Todo from './Todo';
 
 class App extends React.Component {
 
-  constructor (){
-    super();
-    
-    this.state={
-      tasks: ["first", "second","third"],
-      input: ''
-    }
-  }
-
-
 // Establish a function that we are going to be passing
 // into the Todo Component. 
   fun(e){
@@ -25,44 +15,59 @@ class App extends React.Component {
   }
 
   handleChange(e){
-    e.preventDefault();
-    this.setState({
-      input: e.target.value
-    })
+      console.log(e.target.value)
+  }
+  handleClick(e){
+      e.target.value = ''
   }
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.setState({
-      tasks:this.state.tasks.concat([this.state.input]),
-      input: ''
-    })
 
-  }
-  render (){
-    let tasks = this.state.tasks.map((task)=>
-      <Todo task={task} />
-    )
-    console.log(this.state)
-
+  render() {
 
     return (
+/*      
       <div>
-        
-        <form onSubmit={(event)=>this.handleSubmit(event)}>
-          <input onChange={(event)=>this.handleChange(event)} />
-          <input type="submit" />
-        </form>
-
-        { tasks }
-
+        <Todo name="Pick up My cousins kids"
+              age="24" data={data}
+              alert={this.fun} />
       </div>
+
+      <div>
+        <Todo task={this.props.task}
+              improtance={this.props.improtance} />
+      </div>        
+
+      <div>
+        <Todo tasks={this.props.allTasks}
+              arr={arr}
+              string={string}
+              obj={obj} />
+      </div>
+
+      // Below is the code which does not display the input message after the
+      RING THE ALARM was clicked
+      <div>
+        <Todo alert={this.fun}/>
+        <input onChange={(event)=>this.handleClick(event)} />
+        <button onClick={this.fun()}>RING THE ALARM</button>
+      </div>
+*/
+      <div>
+        <Todo alert={this.fun} />
+        <input onChange={(event)=>this.handleChange(event)} />
+        <button onClick={(event)=>this.handleClick(event)}>RING THE ALARM</button>   
+      </div>
+
     );
   }
 }
 
+//const arr = [1,2,3,4]
+//const string = "The Friend Bar"
+//const obj = {'todo': [1,2,3,4]}
+
 // inputting an object.
-//const data = {'todo': [1,2,3,4]}
+// const data = {'todo': [1,2,3,4]}
 
 // passing an array
 // const data = [1,2,3,4]
@@ -87,20 +92,28 @@ class App extends React.Component {
 // }
 
 // Passing an object with one key and two elements in an array
+/*
+      "status": [{
+      name: "whatever",
+      age: 24,
+      single: true
+      },
+      {
+        name: "whomever",
+        age: 99,
+        single: false
+      }]
+
+      task: 'go the store and buy ICE CREAAAM',
+      improtance: 1,
+      completed: false
+*/
 App.defaultProps={
-
-  "status": [{
-  name: "whatever",
-  age: 24,
-  single: true
-  },
-  {
-    name: "whomever",
-    age: 99,
-    single: false
+  allTasks: [{
+  task: 'go to the store and buy ICE CREAAAM',
+  improtance: 1,
+  completed: false
   }]
-
-
 }
 
 export default App;
