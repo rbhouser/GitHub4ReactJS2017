@@ -44,10 +44,11 @@ class App extends React.Component {
   }
 
   handleUpdate(change){
+    console.log('this is current =>', change[0], 'this is new =>', change[1])
   this.setState({
     tasks: this.state.tasks.map(task => task === change[0] ?
             // transform the one with a matching name
-            change[1]  :
+            change[1] :
             // otherwise return original task
             task
           )
